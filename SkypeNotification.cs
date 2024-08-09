@@ -2,11 +2,12 @@ namespace yournamespace
 {
     internal class SkypeNotification
     {
+         public string[] SendList { get; set; }
         public void Notify(string message)
         {
             var client = new RestClient(ConfigHelper.SkypeNotificationAPIUrl);
 
-            foreach (var agent in ConfigHelper.SkypeNotificationList)
+            foreach (var agent in SendList) //skype 發送清單
             {
                 var request = new RestRequest("/skype", Method.POST);
                 // Json to post.
